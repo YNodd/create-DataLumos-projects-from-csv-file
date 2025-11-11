@@ -20,10 +20,10 @@ Also, the rows to be processed have to be set (start_row and end_row) - counting
 - Log in manually in the browser.
 
 While the script is running, you can work normally on your computer, and even on the internet on a separate browser window.<br>
-But don't click in the automated browser while the script is running!
+But don't click in the automated browser while the script is running!<br>
 
-<br>
-It uses Firefox as browser, so Firefox has to be installed on the computer.
+
+It uses Firefox as browser, so Firefox has to be installed on the computer.<br>
 
 There is no error handling. But the browser remains open even if the script crashes, so the inputs could be checked and/or completed manually.
 
@@ -44,6 +44,13 @@ in the inventory sheet (for example: .\epa-facilities)
 - it's easier to fill in the data in a spreadsheet than in the forms of DataLumos (for example the keywords). And you simply can copy-paste the details that stay the same. 
 - you can process more than one data project at once with the csv file; the script adds the projects to the workspace. You can check and publish them later.
 - when the site is loading slow, you don't need to wait for every single input to be processed while you stare at the "busy" icon ;) 
+
+
+
+
+
+
+
 
 
 
