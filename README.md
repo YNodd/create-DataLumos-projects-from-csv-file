@@ -46,11 +46,11 @@ in the inventory sheet (for example: .\epa-facilities)
 - you can process more than one data project at once with the csv file; the script adds the projects to the workspace. You can check and publish them later.
 - when the site is loading slow, you don't need to wait for every single input to be processed while you stare at the "busy" icon ;) 
 
-# Installation
+## Installation
 
 [Firefox][] is a requirement.
 
-Selenium does the heavy lifting the script. But before installing that, you may
+Selenium does the heavy lifting for the script. But before installing that, you may
 want to create a virtual environment.
 
 ```bash
