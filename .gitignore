@@ -1,1 +1,6 @@
 env
+
+.venv/
+.idea/
+my_current_inputdata.csv
+other stuff/
