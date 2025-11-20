@@ -24,8 +24,7 @@ of the instruction ("HIFLD Open to DataLumos Workflow", https://docs.google.com/
 is only for convenience, I copy it when I begin the work on a new HIFLD dataset. It must not be included in the
 selection of the rows that are proceeded by the code (and this row can be deleted in the spreadsheet/csv, if not needed).
 - the "path" column is the folder name for the folder where the data files are located, and should be identical to the one
-in the inventory sheet (for example: ./epa-facilities). It should match how path separators work on your operating system,
-backslashes for Windows and forward slashes for Linux and MacOS.
+in the inventory sheet (for example: ./epa-facilities).
 - inputs in the column 12_download_date_original_source are optional
 """
 
@@ -46,7 +45,7 @@ import os
 
 # TODO: VARIABLES TO SET:
 start_row = 2 # WITHOUT COUNTING THE COLUMNS ROW!  (and beginning at 1)
-end_row = 2 # (to process only one row, set start_row and end_row to the same number)
+end_row = 3 # (to process only one row, set start_row and end_row to the same number)
 csv_file_path = "my_current_inputdata.csv"  # or the complete path, for example: "/home/YNodd/PycharmProjects/datalumos/my_current_inputdata.csv"
 folder_path_uploadfiles = "/media/YNodd/32 GB/data rescue project/"  # the folder where the upload files are (there, the subfolders for the single data projects are located)
 # example: the files are on a USB flash drive, in a folder named "data rescue project", the example path would be: /media/YNodd/32 GB/data rescue project/
@@ -81,13 +80,23 @@ def read_csv_line(csv_file, line_to_process):
 def get_paths_uploadfiles(folderpath):
     # Builds a list with all the single file paths to be uploaded. Takes as argument the path to the parent folder,
     #   where all the data folders are located (for example, the path to the external USB drive).
-    path = datadict["path"]
-    path = path[2:]  # eliminate the first two characters, the dot and the slash
-    uploadfiles_names = os.listdir(os.path.join(folderpath, path))  # list the names of the files
+    mypath = datadict["path"]
+    if mypath[0:2] == ".\\" or mypath[0:2] == "./":
+        # eliminate the first two characters, the dot and the slash:
+        mypath = mypath[2:]
+    operatingsystem = os.name
+    if operatingsystem == "posix":  # for linux or mac
+        mypath = mypath.replace("\\", "/")
+        folderpath = folderpath.replace("\\", "/")
+    elif operatingsystem == "nt":  # for windows
+        mypath = mypath.replace("/", "\\")
+        folderpath = folderpath.replace("\\", "/")
+    combinedpath = os.path.join(folderpath, mypath)
+    #print("combinedpath:", combinedpath)
+    uploadfiles_names = os.listdir(combinedpath)
     print("\nFiles that will be uploaded:", uploadfiles_names, "\n")
     # build the complete paths for the files that should be uploaded, by joining the single parts of the path:
-    uploadfiles_paths = [os.path.join(folderpath, path, filename) for filename in uploadfiles_names]
-    #print(uploadfiles_paths)
+    uploadfiles_paths = [os.path.join(combinedpath, filename) for filename in uploadfiles_names]
     return uploadfiles_paths
 
 def drag_and_drop_file(drop_target, path):
