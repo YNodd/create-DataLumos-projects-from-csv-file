@@ -27,7 +27,7 @@ import os
 
 # TODO: VARIABLES TO SET:
 start_row = 2 # WITHOUT COUNTING THE COLUMNS ROW!  (and beginning at 1)
-end_row = 2 # (to process only one row, set start_row and end_row to the same number)
+end_row = 3 # (to process only one row, set start_row and end_row to the same number)
 csv_file_path = "my_current_inputdata.csv"  # or the complete path, for example: "/home/YNodd/PycharmProjects/datalumos/my_current_inputdata.csv"
 folder_path_uploadfiles = "/media/YNodd/32 GB/data rescue project/"  # the folder where the upload files are (there, the subfolders for the single data projects are located)
 # example: the files are on a USB flash drive, in a folder named "data rescue project", the example path would be: /media/YNodd/32 GB/data rescue project/
@@ -311,7 +311,6 @@ for current_row in range(start_row, end_row + 1):
         time_period_end = WebDriverWait(mydriver, 50).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#endDate")))
         wait_for_obscuring_elements(mydriver)
         time_period_end.send_keys(timeperiod_end_text)
-        print("\nYou have to fill in manually the textfield, if needed.\n")
         # <button type="button" class="btn btn-primary save-dates" data-reactid=".4.0.0.1.1.3.0.0">Save &amp; Apply</button>
         #    .save-dates
         save_time_btn = WebDriverWait(mydriver, 50).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".save-dates")))
@@ -391,10 +390,11 @@ for current_row in range(start_row, end_row + 1):
     close_btn.click()
 
 
-    print("\nContinue manually (check all the filled in details and publish the project).\n")
+    if current_row == end_row:
+        print("\nContinue manually (check all the filled in details and publish the project(s)), and maybe check the script output for error messages.\n")
 
-    #print("In the Inventory spreadsheet: Add the URL in the Download Location field, add 'Y’ to the Data Added field, and change the status field to ‘Done’.\n")
-    print("In the Inventory spreadsheet: Add the needed data \n(for the HIFLD data: add the URL in the Download Location field, add 'Y’ to the Data Added field, and change the status field to ‘Done’).\n")
+        #print("In the Inventory spreadsheet: Add the URL in the Download Location field, add 'Y’ to the Data Added field, and change the status field to ‘Done’.\n")
+        print("In the Inventory spreadsheet: Add the needed data \n(for the HIFLD data: add the URL in the Download Location field, add 'Y’ to the Data Added field, and change the status field to ‘Done’).\n")
 
 
 
