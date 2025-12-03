@@ -1,0 +1,7 @@
+
+# Troubleshooting:
+- if the **Datalumos webpage does not load correctly** after login (for example because it can't load external content):<br>
+You can refresh the page. (The code works by waiting for certain elements to appear on the page - in this case the button "Create New Project". If the workspace loads before the timeout and the button can be found, the script continues normally.) If refreshing the page doesn't help, try starting the script at a later date.
+- sometimes the **script crashes because of the timings of the webpage**. It is then easiest to delete the corresponding project and start the script again. (To delete the project, click on the scrollbar button "more", right under the project title, then "delete project".)
+- for **bigger files** that will **take long to upolad**: do the big file as the last one of many, or do it as a single upload (selecting only one row of the csv file to process). You can also leave the csv column "path" blank, so that the data will be filled in, but no automatic upload will occur (you can then later add the files manually to the project).<br>
+Alternatively, you can make the timeout of the script longer, so that it will wait longer for the uploads to be finished. You do this by changing the corresponding number in the code at the end of the script file (The last occurrence of "WebDriverWait(mydriver,..."). The number is the amount of seconds the script will wait.

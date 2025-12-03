@@ -380,6 +380,7 @@ for current_row in range(start_row, end_row + 1):
         #sleep(10)
         test2 = mydriver.find_elements(By.XPATH, "//span[text()='File added to queue for upload.']")
         # wait until the text has appeared as often as there are files:
+        #   (to wait longer for uploads to be completed, change the number in WebDriverWait(mydriver, ...) - it is the waiting time in seconds)
         WebDriverWait(mydriver, 2000).until(lambda x: True if len(mydriver.find_elements(By.XPATH, "//span[text()='File added to queue for upload.']")) == filecount else False)
         print("\nEverything should be uploaded completely now.\n")
 
