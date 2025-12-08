@@ -4,7 +4,7 @@
 # Create DataLumos projects from csv file
 
 
-<span style='color: red;'>[**PLEASE NOTE: The script doesn't work anymore, because it is now blocked by the webpage / Cloudflare!**]</span>
+## [**PLEASE NOTE: The script doesn't work anymore, because the it is detected by the webpage / Cloudflare!**]
 
 Script to automatically fill in the DataLumos forms from a csv file (exported spreadsheet), and upload the data files.<br>
 Login, checking and publishing is done manually to avoid errors.<br>
